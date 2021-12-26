@@ -1,9 +1,11 @@
 const express = require('express');
-const {addDataSet} = require('../controllers/deductiveKBController');
+const {verifyToken} = require('../utilities');
+const {addDataSet, addDisease} = require('../controllers/deductiveKBController');
 
 const router = express.Router();
 
-router.post('/data',addDataSet);
+router.post('/deductiveKB', verifyToken, addDataSet);
+router.put('/deductiveKB', verifyToken, addDisease);
 
 module.exports = {
     routes: router
